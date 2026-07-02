@@ -1,0 +1,23 @@
+{
+  "name": "pulse-starter-kit",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Build a paying agent on PulseNetwork in ~10 minutes. Fork → edit catalog.json → ship a reseller agent on Virtuals ACP.",
+  "scripts": {
+    "check": "tsx src/check.ts",
+    "start": "tsx src/agent.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@account-kit/infra": "latest",
+    "@virtuals-protocol/acp-node-v2": "latest",
+    "dotenv": "^17.4.2",
+    "viem": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.0",
+    "tsx": "latest",
+    "typescript": "latest"
+  }
+}

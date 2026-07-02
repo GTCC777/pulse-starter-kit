@@ -1,0 +1,27 @@
+{
+  "$schema": "./catalog.schema.json",
+  "agent": {
+    "name": "My Token-Safety Agent",
+    "tagline": "Pre-trade rug/honeypot checks for any Base/EVM token."
+  },
+  "products": [
+    {
+      "offering": "evmtoken_safety",
+      "description": "Pre-trade rug/honeypot/tax check for any Base or EVM token address.",
+      "endpoint": "https://onchainpulse-nine.vercel.app/api/evmtoken",
+      "query": { "address": "{tokenAddress}", "chain": "{chain|base}" },
+      "required": ["tokenAddress"],
+      "wholesale": 0.005,
+      "retail": 0.05
+    },
+    {
+      "offering": "memecoin_safety",
+      "description": "Solana SPL memecoin rug/honeypot/momentum scan.",
+      "endpoint": "https://onchainpulse-nine.vercel.app/api/memecoin",
+      "query": { "mint": "{mint}" },
+      "required": ["mint"],
+      "wholesale": 0.005,
+      "retail": 0.05
+    }
+  ]
+}

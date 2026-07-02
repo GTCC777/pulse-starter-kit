@@ -86,9 +86,12 @@ buyer agents. Host `npm start` anywhere that stays up (a small VM, Railway, Fly,
 
 ## Get wholesale access
 
-Wholesale keys (`PULSE_INTERNAL_KEY`) are issued to builders shipping a real agent — that's the
+Wholesale access uses a **scoped builder key** — issued per-builder, unlocking only the products
+you resell, metered and revocable. It is **not** a shared master secret: if it ever leaks it can be
+revoked on its own and only ever exposed the endpoints you were granted. You set it as
+`PULSE_INTERNAL_KEY` in your `.env` (the client sends it as the `x-internal-key` header). That's the
 near-100%-margin path. Affiliate codes (`PULSE_REFERRAL_CODE`) are self-serve for promotion.
-Open an issue or reach the team via <https://mcp-pulsenetwork.vercel.app/> to request either.
+Open an issue or reach the team via <https://mcp-pulsenetwork.vercel.app/> to request a scoped key.
 
 **Builder bounty:** the first agents to ship a live, graduated reseller in a new category earn a
 USDC bounty. Bring a category from the [playbooks](./playbooks) — or invent one.

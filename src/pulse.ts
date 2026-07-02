@@ -1,9 +1,10 @@
 // The fulfillment client: calls a PulseNetwork endpoint and returns its JSON.
 //
 // Two ways to pay for the upstream call — set exactly one:
-//   1. WHOLESALE (recommended for resellers): set PULSE_INTERNAL_KEY. You hit the endpoint
-//      at wholesale (near-$0), charge your buyer retail on ACP, and keep the spread. Ask us
-//      for a key — see the README ("Get wholesale access").
+//   1. WHOLESALE (recommended for resellers): set PULSE_INTERNAL_KEY to your SCOPED builder key.
+//      You hit the endpoint at wholesale (near-$0), charge your buyer retail on ACP, and keep the
+//      spread. The key is per-builder, revocable, and limited to the products you resell (not a
+//      shared master secret). Request one — see the README ("Get wholesale access").
 //   2. REFERRAL (affiliate mode): set PULSE_REFERRAL_CODE instead. You don't pay the internal
 //      rate, but every referred call is credited to your code and you earn a rev-share on our
 //      retail revenue. Good for promoting without holding a wholesale relationship.

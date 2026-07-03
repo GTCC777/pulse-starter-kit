@@ -1,13 +1,19 @@
 # PulseNetwork Starter Kit
 
-**Build a paying agent in ~10 minutes.** Fork this repo, edit one JSON file, and ship a
-reseller agent on [Virtuals ACP](https://app.virtuals.io/acp) that earns USDC by selling
-PulseNetwork's ~68 data verticals / ~660 metered endpoints.
+**This kit is how you pack your first AI ___-in-a-Box.** We built the engine — real,
+metered, pay-per-call intelligence across ~68 verticals. You pick one (or a few), brand it,
+price it, and ship it as your own AI Travel-Agent-in-a-Box, AI Token-Safety-Officer-in-a-Box,
+AI Exam-Prep-Tutor-in-a-Box — whatever your market needs. Fork this repo, edit one JSON file,
+and ship a reseller agent on [Virtuals ACP](https://app.virtuals.io/acp) in about 10 minutes.
 
 You are the **retailer**. PulseNetwork is the **wholesaler** — token-safety scans, sports &
 prediction-market reads, immigration eligibility, exam prep, meal plans, salary benchmarks,
 DeFi yield, and more, all as pay-per-call endpoints. You don't rebuild any of it. You list an
 offering, buyers pay you retail, you fulfill at wholesale, and you keep the spread.
+
+Honest version: this kit is the engine, the billing, and the docs — not a complete business,
+not an income guarantee. You still have to find buyers and do the selling; no kit hands you
+that part. What it does hand you is real capability you didn't have to build yourself.
 
 ```
 buyer ──pays retail──▶  your ACP agent  ──wholesale call──▶  PulseNetwork endpoint
@@ -23,7 +29,7 @@ buyer ──pays retail──▶  your ACP agent  ──wholesale call──▶ 
 The agent economy is early. There is real, discoverable, *paying* demand on ACP (crypto agents
 buying token-safety, DFS agents buying picks) — but the hard parts (the data, the models, the
 calibration, the metering rails) are already built and live. This kit collapses "start an agent
-business" down to: **fork → point at our endpoints → brand → ship.**
+business" down to packing your own AI ___-in-a-Box: **fork → point at our endpoints → brand → ship.**
 
 Two ways to make money on the same rails — pick either or both:
 

@@ -29,7 +29,7 @@ Two ways to make money on the same rails — pick either or both:
 
 | Mode | You set | You earn | Best for |
 |------|---------|----------|----------|
-| **Wholesale / reseller** | `PULSE_INTERNAL_KEY` | retail − wholesale spread (near-100% margin) | running your own ACP agent, setting your own prices |
+| **Wholesale / reseller** | `PULSE_INTERNAL_KEY` | retail − wholesale spread (wholesale = 50% of live retail price; you keep the rest) | running your own ACP agent, setting your own prices |
 | **Affiliate / rev-share** | `PULSE_REFERRAL_CODE` | ~25% of referred retail revenue | promoting without holding a wholesale relationship |
 
 ---
@@ -86,12 +86,25 @@ buyer agents. Host `npm start` anywhere that stays up (a small VM, Railway, Fly,
 
 ## Get wholesale access
 
-Wholesale access uses a **scoped builder key** — issued per-builder, unlocking only the products
-you resell, metered and revocable. It is **not** a shared master secret: if it ever leaks it can be
-revoked on its own and only ever exposed the endpoints you were granted. You set it as
-`PULSE_INTERNAL_KEY` in your `.env` (the client sends it as the `x-internal-key` header). That's the
-near-100%-margin path. Affiliate codes (`PULSE_REFERRAL_CODE`) are self-serve for promotion.
-Open an issue or reach the team via <https://mcp-pulsenetwork.vercel.app/> to request a scoped key.
+Wholesale access uses a **scoped, prepaid builder key** — issued per-builder, unlocking only the
+products you resell, metered and revocable. It is **not** a shared master secret: if it ever leaks
+it can be revoked on its own and only ever exposed the endpoints you were granted. You set it as
+`PULSE_INTERNAL_KEY` in your `.env` (the client sends it as the `x-internal-key` header).
+
+Get one yourself, instantly, self-serve at **<https://mcp-pulsenetwork.vercel.app/wholesale>**:
+
+1. Submit the form (just a contact + optional scope) — you get a `pk_live_…` key back immediately,
+   with a **$0.25 free trial balance** already loaded so you can test real calls before spending
+   anything.
+2. Each call deducts wholesale cost (50% of that endpoint's live retail price, floored at
+   $0.005/call) straight from your balance — no per-call crypto payment in your hot path.
+3. When the balance runs low, top it up with a single on-chain payment: the deposit endpoint
+   (`/api/wholesale/deposit?key=…&tier=5|25|100`) is itself gated by x402 — pay the 402 in USDC
+   (Base or Solana) and your balance credits automatically the moment it settles. No invoicing, no
+   manual approval, no waiting on the team.
+
+Affiliate codes (`PULSE_REFERRAL_CODE`) are a separate, self-serve rev-share path for promotion
+without holding a wholesale relationship — see <https://mcp-pulsenetwork.vercel.app/affiliates>.
 
 **Builder bounty:** the first agents to ship a live, graduated reseller in a new category earn a
 USDC bounty. Bring a category from the [playbooks](./playbooks) — or invent one.

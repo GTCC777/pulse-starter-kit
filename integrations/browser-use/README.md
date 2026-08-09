@@ -23,13 +23,20 @@ python pulsenetwork_template.py
 | `pulse_buy(url)` | pay per call | Pays with USDC on Base, returns the JSON |
 
 Safety is code, not prompt: a per-call cap (default $0.50), a session budget
-(default $2.00), and a host allowlist so the agent can only ever pay PulseNetwork
-endpoints. The private key lives in an env var the LLM never sees.
+(default $2.00), and a host allowlist so the agent can only ever reach
+PulseNetwork endpoints. The private key lives in an env var the LLM never sees.
 
 The caps are enforced as an x402 payment policy, so they are checked against the
 402 challenge that is actually signed rather than against an earlier quote. A
-price that moves between the quote and the payment cannot slip past them, and a
-lock around the buy path stops two concurrent calls from both spending the last
-of the budget.
+price that moves between the quote and the payment cannot slip past them. The
+policy pins the asset to USDC on Base as well as the network, because the caps
+are counted in USDC's six decimals and the same atomic amount in a token with
+different decimals would be a different amount of money.
+
+The allowlist and an https requirement apply to every tool that makes an
+outbound request, not just the paying one. The agent reads live web pages while
+it works, so a page must not be able to talk it into fetching an internal
+address. A lock around the buy path stops two concurrent calls from both
+spending the last of the budget.
 
 Catalog: https://pulse.theaslangroupllc.com/llms.txt
